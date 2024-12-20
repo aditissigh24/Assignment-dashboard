@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
 import { Link, Navigate, useNavigate } from 'react-router-dom';
 
+
 interface User {
     id: number;
     name: string;
@@ -51,12 +52,14 @@ export default function Users() {
         
   
         if (!response.ok) {
+          alert('Users not found')
           throw new Error(`HTTP error! status: ${response.status}`);
         }
   
         const data: User[] = await response.json();
         setUsers(data);
       } catch (err: unknown) {
+        
         if (err instanceof Error) {
           setError(err.message);
         } else {
@@ -67,13 +70,7 @@ export default function Users() {
       }
     };
   
-    if (loading) {
-      return (
-        <div className="flex justify-center items-center min-h-[200px]">
-          Loading...
-        </div>
-      );
-    }
+    
     const handleUserSelect = (user: User) => {
         setSelectedUser(user);
         navigate(`/User/${user.id}`); // Navigate to the user's detail page using their ID

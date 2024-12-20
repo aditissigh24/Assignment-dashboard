@@ -5,8 +5,8 @@ export default function UserAcitivities(props:any) {
   return (
     <div className='flex justify-center'>
         <div className='bg-white shadow-md border-2 rounded-2xl m-2 md:h-1/2 md:w-2/3 lg:h-1/3 lg:w-1/2 p-4'>
-            <h1 className='text-lg font-semibold'>{props.title}</h1>
-            <h1 className='text-base ml-5'>{props.body}</h1>
+            <h1 className='text-lg font-semibold'>"{props.title}"</h1>
+            <h1 className='text-base ml-3'>{props.body}</h1>
             <div className="flex items-center space-x-6 text-gray-500 mt-10">
               <button className="flex items-center space-x-2 hover:text-red-500 transition">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-6">

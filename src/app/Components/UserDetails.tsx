@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import UserProfile from './UserProfile'
 import UserAcitivities from "./UserAcitivities";
-
+import "./loader.css";
 interface User {
     id: number;
     name: string;
@@ -52,12 +52,14 @@ function UserDetails() {
          setError(null);
          const response = await fetch(`${API_BASE_URL}`);
          if (!response.ok) {
+          alert("User details not found")
            throw new Error(`HTTP error! status: ${response.status}`);
          }
    
          const data: User = await response.json();
          setUser(data);
        } catch (err: unknown) {
+        alert("Something is wrong on our side, let us check")
          if (err instanceof Error) {
            setError(err.message);
          } else {
@@ -73,6 +75,7 @@ function UserDetails() {
           try {
                 const response = await fetch(`https://jsonplaceholder.typicode.com/posts?userId=${userId}`); // Example API
                 if (!response.ok) {
+                  alert("Somethings wrong with post response, let us see")
                   throw new Error('Failed to fetch posts');
                 }
                 const data: Post[] = await response.json();
@@ -84,7 +87,9 @@ function UserDetails() {
                 }));
                 setPosts(formattedPosts);
               }  catch (err: unknown) {
+                alert("Error fetching posts");
                 if (err instanceof Error) {
+                  
                   setError(err.message);
                 } else {
                   setError('An unexpected error occurred');
@@ -112,7 +117,9 @@ function UserDetails() {
                     />
                 </div>
             ) : (
-                <p className="font-semibold text-xl align-middle">.</p>
+              <div className="flex justify-center">
+              <div className="spinner"></div>
+              </div>
             )}
 
     <div className="flex justify-start md:ml-32 lg:ml-96">
