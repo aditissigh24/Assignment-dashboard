@@ -112,7 +112,7 @@ function UserDetails() {
                     />
                 </div>
             ) : (
-                <p className="font-semibold text-xl align-middle">...</p>
+                <p className="font-semibold text-xl align-middle">.</p>
             )}
 
     <div className="flex justify-start md:ml-32 lg:ml-96">
